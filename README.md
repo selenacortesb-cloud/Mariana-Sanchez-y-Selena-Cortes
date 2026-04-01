@@ -120,9 +120,8 @@ Este enfoque permite dimensionar el esfuerzo requerido para la construcción del
 
 ### Diagrama de Gantt
 
-(Insertar la imagen )
-
-
+(![WhatsApp Image 2026-03-31 at 10 38 35 PM](https://github.com/user-attachments/assets/41e9693d-3939-49e7-90d0-da24b3e84a42)
+ 
 ## Actas
 
 Las actas de entendimiento, colaboración y responsabilidad se encuentran en la carpeta "actas" del repositorio.
