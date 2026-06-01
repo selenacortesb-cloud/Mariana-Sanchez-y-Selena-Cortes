@@ -1,7 +1,0 @@
-usuario1 = clsUsuarios(
-    "Mariana",
-    "Sanchez",
-    "12345",
-    "mariana@gmail.com",
-    30
-)
