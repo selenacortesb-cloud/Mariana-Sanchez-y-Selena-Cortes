@@ -141,3 +141,6 @@ v0.7  Semana 15  Implementación de devoluciones y facturación
 v1.0  Semana 16  Entrega final, pruebas y documentación completa 
 
 La estrategia de versionado permitió mantener trazabilidad sobre los cambios realizados durante el desarrollo del software y facilitar el control de versiones dentro del repositorio GitHub.
+
+
+hola
