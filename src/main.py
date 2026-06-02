@@ -88,3 +88,5 @@ def menu():
 
 if __name__ == "__main__":
     menu()
+cd ruta/a/tu/proyecto
+python src/main.py
