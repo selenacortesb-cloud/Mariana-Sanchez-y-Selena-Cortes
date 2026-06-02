@@ -1,6 +1,7 @@
 from validaciones import *
 from clsUsuarios import clsUsuarios
 from clsItem import clsItem
+from administrador import exportar_csv
 import os
 
 # USUARIOS
@@ -370,14 +371,10 @@ while True:
         registrar_prestamo()
     elif opcion == "4":
        registrar_devolucion()
-
     elif opcion == "5":
        consultar_prestamos()
-        
     elif opcion == "6":
-        print(
-            "Modulo administrador en desarrollo"
-        )
+      exportar_csv()
     elif opcion == "7":
         print("Hasta luego")
         break
