@@ -6,7 +6,7 @@ from datetime import datetime
 import os
 
 # CONSTANTES
-DATA_DIR = "src/datos"
+DATA_DIR = "src/data"
 CERT_DIR = "src/certificados"
 TAX_RATE = 0.23
 VALID_TIMES = [5, 10, 15, 30]
