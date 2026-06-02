@@ -6,7 +6,6 @@ import os
 
 # USUARIOS
 def cargar_usuarios():
-```
 usuarios = []
 if os.path.exists("src/datos/usuarios.txt"):
     with open(
@@ -26,9 +25,7 @@ if os.path.exists("src/datos/usuarios.txt"):
                 )
                 usuarios.append(usuario)
 return usuarios
-```
 def guardar_usuario(usuario):
-```
 with open(
     "src/datos/usuarios.txt",
     "a",
@@ -41,9 +38,7 @@ with open(
         f"{usuario.correo};"
         f"{usuario.tiempo_prestamo}\n"
     )
-```
 def registrar_usuario():
-```
 print("\n=== REGISTRO DE USUARIO ===")
 nombre = input("Nombre: ")
 if not validar_nombre(nombre):
@@ -89,10 +84,8 @@ guardar_usuario(
 print(
     "Usuario registrado correctamente"
 )
-```
 # ITEMS
 def obtener_consecutivo_items():
-```
 try:
     with open(
         "src/datos/items.txt",
@@ -104,12 +97,10 @@ try:
         ) + 1
 except:
     return 1
-```
 def generar_id_item(
 categoria,
 consecutivo
 ):
-```
 prefijos = {
     "Videojuegos": "VID",
     "Libros": "LIB",
@@ -122,9 +113,7 @@ return (
     prefijos[categoria]
     + str(consecutivo).zfill(3)
 )
-```
 def guardar_item(item):
-```
 with open(
     "src/datos/items.txt",
     "a",
@@ -137,9 +126,7 @@ with open(
         f"{item.precio};"
         f"{item.estado}\n"
     )
-```
 def registrar_item():
-```
 print("\n=== REGISTRO DE ITEM ===")
 nombre = input(
     "Nombre del item: "
@@ -169,9 +156,7 @@ guardar_item(item)
 print(
     f"Item registrado correctamente. ID: {codigo}"
 )
-```
 def usuario_existe(documento):
-```
 with open(
     "src/datos/usuarios.txt",
     "r",
@@ -182,9 +167,7 @@ with open(
         if datos[0] == documento:
             return True
 return False
-```
 def item_existe(codigo):
-```
 with open(
     "src/datos/items.txt",
     "r",
@@ -195,12 +178,10 @@ with open(
         if datos[0] == codigo:
             return True
 return False
-```
 def guardar_prestamo(
 documento,
 codigo
 ):
-```
 from datetime import datetime
 with open(
     "src/datos/prestamos.txt",
@@ -212,9 +193,7 @@ with open(
         f"{codigo};"
         f"{datetime.now().date()}\n"
     )
-```
 def registrar_prestamo():
-```
 print("\n=== REGISTRO DE PRESTAMO ===")
 documento = input(
     "Documento usuario: "
@@ -243,9 +222,7 @@ guardar_prestamo(
 print(
     "Prestamo registrado correctamente"
 )
-```
 def consultar_prestamos():
-```
 print("\n=== PRESTAMOS ACTIVOS ===")
 try:
     with open(
@@ -266,12 +243,10 @@ except:
     print(
         "No hay prestamos registrados"
     )
-```
 def generar_certificado(
 documento,
 codigo
 ):
-```
 from datetime import datetime
 nombre_archivo = (
     f"src/certificados/"
@@ -300,9 +275,7 @@ with open(
 print(
     "Certificado generado"
 )
-```
 def registrar_devolucion():
-```
 documento = input(
     "Documento usuario: "
 )
@@ -347,10 +320,56 @@ generar_certificado(
 print(
     "Devolucion registrada"
 )
-```
+def generar_factura():
+documento = input(
+    "Documento usuario: "
+)
+codigo = input(
+    "Codigo item: "
+)
+precio = float(
+    input(
+        "Precio del item: "
+    )
+)
+subtotal = precio
+impuesto = subtotal * 0.23
+total = subtotal + impuesto
+nombre_archivo = (
+    f"src/certificados/"
+    f"factura_{documento}_{codigo}.txt"
+)
+with open(
+    nombre_archivo,
+    "w",
+    encoding="utf-8"
+) as archivo:
+    archivo.write(
+        "FACTURA DE VENTA\n"
+    )
+    archivo.write(
+        "====================\n"
+    )
+    archivo.write(
+        f"Usuario: {documento}\n"
+    )
+    archivo.write(
+        f"Item: {codigo}\n"
+    )
+    archivo.write(
+        f"Subtotal: ${subtotal}\n"
+    )
+    archivo.write(
+        f"Impuesto 23%: ${impuesto}\n"
+    )
+    archivo.write(
+        f"TOTAL: ${total}\n"
+    )
+print(
+    "Factura generada correctamente"
+)
 # MENU
 def menu():
-```
 while True:
     print("\n===== ALQUILOOP =====")
     print("1. Registrar usuario")
@@ -358,8 +377,9 @@ while True:
     print("3. Registrar prestamo")
     print("4. Registrar devolucion")
     print("5. Consultar prestamos")
-    print("6. Administrador")
-    print("7. Salir")
+    print("6. Generar venta")
+    print("7. Exportar CSV")
+    print("8. Salir")
     opcion = input(
         "\nSeleccione una opcion: "
     )
@@ -374,16 +394,16 @@ while True:
     elif opcion == "5":
        consultar_prestamos()
     elif opcion == "6":
-      exportar_csv()
+        generar_factura()
     elif opcion == "7":
+        exportar_csv()
+    elif opcion == "8":
         print("Hasta luego")
+break
         break
     else:
         print(
             "Opcion invalida"
         )
-```
 if **name** == "**main**":
-```
 menu()
-```
