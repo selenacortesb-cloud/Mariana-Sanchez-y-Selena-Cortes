@@ -1,45 +1,44 @@
 import pandas as pd
 
+
 def exportar_csv():
 
-```
-datos = []
+    datos = []
 
-try:
+    try:
 
-    with open(
-        "src/data/prestamos.txt",
-        "r",
-        encoding="utf-8"
-    ) as archivo:
+        with open(
+            "src/datos/prestamos.txt",
+            "r",
+            encoding="utf-8"
+        ) as archivo:
 
-        for linea in archivo:
+            for linea in archivo:
 
-            datos.append(
-                linea.strip().split(";")
-            )
+                datos.append(
+                    linea.strip().split(";")
+                )
 
-    df = pd.DataFrame(
-        datos,
-        columns=[
-            "Documento",
-            "Item",
-            "Fecha"
-        ]
-    )
+        df = pd.DataFrame(
+            datos,
+            columns=[
+                "Documento",
+                "Item",
+                "Fecha"
+            ]
+        )
 
-    df.to_csv(
-        "src/exportaciones/prestamos.csv",
-        index=False
-    )
+        df.to_csv(
+            "src/exportaciones/prestamos.csv",
+            index=False
+        )
 
-    print(
-        "CSV generado correctamente"
-    )
+        print(
+            "CSV generado correctamente"
+        )
 
-except:
+    except Exception as e:
 
-    print(
-        "No existen prestamos"
-    )
-```
+        print(
+            f"Error: {e}"
+        )
