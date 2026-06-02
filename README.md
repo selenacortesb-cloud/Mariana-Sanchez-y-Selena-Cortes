@@ -131,13 +131,13 @@ Las actas de entendimiento, colaboración y responsabilidad se encuentran en la 
 El proyecto ALQUILOOP se desarrolló utilizando un esquema de versionado incremental que permitió registrar los avances realizados durante cada etapa del desarrollo.
 
  Versión  Fecha  Descripción 
-v0.1 Semana 8  Creación del repositorio GitHub y documentación inicial 
-v0.2 Semana 9  Definición de requisitos funcionales y no funcionales 
-v0.3 Semana 10  Diseño de la arquitectura y definición de clases 
- v0.4  Semana 12  Implementación del registro de usuarios 
-v0.5 Semana 13  Implementación del registro de ítems 
-v0.6  Semana 14 Implementación del sistema de préstamos 
-v0.7  Semana 15  Implementación de devoluciones y facturación
-v1.0  Semana 16  Entrega final, pruebas y documentación completa 
+-v0.1 Semana 8  Creación del repositorio GitHub y documentación inicial 
+-v0.2 Semana 9  Definición de requisitos funcionales y no funcionales 
+-v0.3 Semana 10  Diseño de la arquitectura y definición de clases 
+-v0.4  Semana 12  Implementación del registro de usuarios 
+-v0.5 Semana 13  Implementación del registro de ítems 
+-v0.6  Semana 14 Implementación del sistema de préstamos 
+-v0.7  Semana 15  Implementación de devoluciones y facturación
+-v1.0  Semana 16  Entrega final, pruebas y documentación completa 
 
 La estrategia de versionado permitió mantener trazabilidad sobre los cambios realizados durante el desarrollo del software y facilitar el control de versiones dentro del repositorio GitHub.
