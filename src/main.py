@@ -1,57 +1,7 @@
 from validaciones import *
-
-def menu():
-
-    while True:
-
-        print("\n===== ALQUILOOP =====")
-
-        print("1. Registrar usuario")
-        print("2. Registrar item")
-        print("3. Registrar prestamo")
-        print("4. Registrar devolucion")
-        print("5. Consultar prestamos")
-        print("6. Administrador")
-        print("7. Salir")
-        opcion = input(
-            "\nSeleccione una opcion: "
-        )
-        if opcion == "1":
-            print(
-                "Modulo registro usuario"
-            )
-        elif opcion == "2":
-            print(
-                "Modulo registro item"
-            )
-        elif opcion == "3":
-            print(
-                "Modulo prestamos"
-            )
-       elif opcion == "4":
-            print(
-                "Modulo devoluciones"
-            )
-        elif opcion == "5":
-            print(
-                "Modulo consultas"
-            )
-        elif opcion == "6":
-            print(
-                "Modulo administrador"
-            )
-        elif opcion == "7":
-            print("Hasta luego")
-            break
-        else:
-            print(
-                "Opcion invalida"
-            )
-if opcion == "1":
-    registrar_usuario()
 from clsUsuarios import clsUsuarios
-from validaciones import *
 import os
+
 def cargar_usuarios():
     usuarios = []
     if os.path.exists("src/data/usuarios.txt"):
@@ -68,11 +18,13 @@ def cargar_usuarios():
                     )
                     usuarios.append(usuario)
     return usuarios
+
 def guardar_usuario(usuario):
     with open("src/data/usuarios.txt", "a", encoding="utf-8") as archivo:
         archivo.write(
             f"{usuario.documento};{usuario.nombre};{usuario.apellido};{usuario.correo};{usuario.tiempo_prestamo}\n"
         )
+
 def registrar_usuario():
     print("\n=== REGISTRO DE USUARIO ===")
     nombre = input("Nombre: ").strip()
@@ -103,3 +55,36 @@ def registrar_usuario():
     nuevo_usuario = clsUsuarios(nombre, apellido, documento, correo, tiempo)
     guardar_usuario(nuevo_usuario)
     print("Usuario registrado correctamente.")
+
+def menu():
+    while True:
+        print("\n===== ALQUILOOP =====")
+        print("1. Registrar usuario")
+        print("2. Registrar item")
+        print("3. Registrar prestamo")
+        print("4. Registrar devolucion")
+        print("5. Consultar prestamos")
+        print("6. Administrador")
+        print("7. Salir")
+        opcion = input("\nSeleccione una opcion: ")
+        
+        if opcion == "1":
+            registrar_usuario()
+        elif opcion == "2":
+            print("Modulo registro item")
+        elif opcion == "3":
+            print("Modulo prestamos")
+        elif opcion == "4":
+            print("Modulo devoluciones")
+        elif opcion == "5":
+            print("Modulo consultas")
+        elif opcion == "6":
+            print("Modulo administrador")
+        elif opcion == "7":
+            print("Hasta luego")
+            break
+        else:
+            print("Opcion invalida")
+
+if __name__ == "__main__":
+    menu()
