@@ -169,6 +169,184 @@ print(
     f"Item registrado correctamente. ID: {codigo}"
 )
 ```
+def usuario_existe(documento):
+```
+with open(
+    "src/datos/usuarios.txt",
+    "r",
+    encoding="utf-8"
+) as archivo:
+    for linea in archivo:
+        datos = linea.strip().split(";")
+        if datos[0] == documento:
+            return True
+return False
+```
+def item_existe(codigo):
+```
+with open(
+    "src/datos/items.txt",
+    "r",
+    encoding="utf-8"
+) as archivo:
+    for linea in archivo:
+        datos = linea.strip().split(";")
+        if datos[0] == codigo:
+            return True
+return False
+```
+def guardar_prestamo(
+documento,
+codigo
+):
+```
+from datetime import datetime
+with open(
+    "src/datos/prestamos.txt",
+    "a",
+    encoding="utf-8"
+) as archivo:
+    archivo.write(
+        f"{documento};"
+        f"{codigo};"
+        f"{datetime.now().date()}\n"
+    )
+```
+def registrar_prestamo():
+```
+print("\n=== REGISTRO DE PRESTAMO ===")
+documento = input(
+    "Documento usuario: "
+)
+if not usuario_existe(
+    documento
+):
+    print(
+        "Usuario no registrado"
+    )
+    return
+codigo = input(
+    "Codigo item: "
+)
+if not item_existe(
+    codigo
+):
+    print(
+        "Item no existe"
+    )
+    return
+guardar_prestamo(
+    documento,
+    codigo
+)
+print(
+    "Prestamo registrado correctamente"
+)
+```
+def consultar_prestamos():
+```
+print("\n=== PRESTAMOS ACTIVOS ===")
+try:
+    with open(
+        "src/datos/prestamos.txt",
+        "r",
+        encoding="utf-8"
+    ) as archivo:
+        contenido = archivo.read()
+        if contenido.strip() == "":
+            print(
+                "No hay prestamos"
+            )
+        else:
+            print(
+                contenido
+            )
+except:
+    print(
+        "No hay prestamos registrados"
+    )
+```
+def generar_certificado(
+documento,
+codigo
+):
+```
+from datetime import datetime
+nombre_archivo = (
+    f"src/certificados/"
+    f"certificado_{documento}_{codigo}.txt"
+)
+with open(
+    nombre_archivo,
+    "w",
+    encoding="utf-8"
+) as archivo:
+    archivo.write(
+        "CERTIFICADO DE DEVOLUCION\n"
+    )
+    archivo.write(
+        "========================\n"
+    )
+    archivo.write(
+        f"Usuario: {documento}\n"
+    )
+    archivo.write(
+        f"Item: {codigo}\n"
+    )
+    archivo.write(
+        f"Fecha: {datetime.now()}\n"
+    )
+print(
+    "Certificado generado"
+)
+```
+def registrar_devolucion():
+```
+documento = input(
+    "Documento usuario: "
+)
+codigo = input(
+    "Codigo item: "
+)
+prestamos_actuales = []
+encontrado = False
+with open(
+    "src/datos/prestamos.txt",
+    "r",
+    encoding="utf-8"
+) as archivo:
+    for linea in archivo:
+        datos = linea.strip().split(";")
+        if (
+            datos[0] == documento
+            and datos[1] == codigo
+        ):
+            encontrado = True
+        else:
+            prestamos_actuales.append(
+                linea
+            )
+if not encontrado:
+    print(
+        "Prestamo no encontrado"
+    )
+    return
+with open(
+    "src/datos/prestamos.txt",
+    "w",
+    encoding="utf-8"
+) as archivo:
+    archivo.writelines(
+        prestamos_actuales
+    )
+generar_certificado(
+    documento,
+    codigo
+)
+print(
+    "Devolucion registrada"
+)
+```
 # MENU
 def menu():
 ```
@@ -189,17 +367,13 @@ while True:
     elif opcion == "2":
         registrar_item()
     elif opcion == "3":
-        print(
-            "Modulo prestamos en desarrollo"
-        )
+        registrar_prestamo()
     elif opcion == "4":
-        print(
-            "Modulo devoluciones en desarrollo"
-        )
+       registrar_devolucion()
+
     elif opcion == "5":
-        print(
-            "Modulo consultas en desarrollo"
-        )
+       consultar_prestamos()
+        
     elif opcion == "6":
         print(
             "Modulo administrador en desarrollo"
